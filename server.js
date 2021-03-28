@@ -15,6 +15,8 @@ if(process.env.NODE_ENV === "production"){
 
 	app.get("*",(req, res) => {
 		res.sendFile(path.resolve(__dirname, 'webapp', 'build', 'index.html'));
+		res.sendFile(path.resolve(__dirname, 'webapp/build/static/css/main.32a6273b.chunk.css'));
+		res.sendFile(path.resolve(__dirname, 'webapp/build/static/css/main.32a6273b.chunk.css.map'));
 	});
 }
 else{
