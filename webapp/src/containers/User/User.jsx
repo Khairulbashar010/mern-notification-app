@@ -70,7 +70,6 @@ export default class User extends Component {
     render() {
         return (
             <div>
-
                 {this.state.isSubmitted && <p className="text-success">User created</p>}
                 {this.state.error && <p className="text-danger">Error ocured</p>}
 
@@ -85,7 +84,7 @@ export default class User extends Component {
                     />
 
                     <input
-                    className={classess.button}
+                    className="btn btn-lg btn-primary"
                     type="submit"
                     value="Create"
                     />
