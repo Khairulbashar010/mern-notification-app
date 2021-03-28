@@ -85,7 +85,7 @@ export default class User extends Component {
                     />
 
                     <input
-                    className="btn btn-lg btn-primary"
+                    className={classess.button}
                     type="submit"
                     value="Create"
                     />

@@ -19,3 +19,13 @@ li {
     color: #61dafb;
 }
 
+.button {
+    position: relative;
+    width: 250px;
+    height: 40px;
+    display: block;
+    background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+    border:none;
+    margin-top: 20px;
+
+}
