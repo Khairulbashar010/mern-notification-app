@@ -6,12 +6,13 @@ import classess from './User.module.css'
 
 
 export default class User extends Component {
-    state = {
-        users: [],
-        name: "",
-        isSubmitted: false,
-        error: false
-    }
+
+        state = {
+            users: [],
+            name: "",
+            isSubmitted: false,
+            error: false
+        }
 
     componentDidMount() {
         this.fetchUsers()
@@ -20,43 +21,42 @@ export default class User extends Component {
     fetchUsers() {
          axios.get(`/users`)
         .then(res => {
-            console.log(res.data.user)
             this.setState({users: res.data.user}
         )})
         .catch(err =>
             console.log('Error ocured', err)
         )
     }
+
     changeHandler = (e) => {
         this.setState ({
             [e.target.name]: e.target.value
         })
     }
 
-    submitHandler = async (e) => {
+    submitHandler = (e) => {
         e.preventDefault()
-        await axios.post(`/`, {
+        axios.post(`/`, {
             name: this.state.name
         })
         .then(res => {
             this.fetchUsers()
             if(res.data.res !== null){
                 this.setState({
-                name: "",
-                isSubmitted: true,
-                error: false
-            })
-            setTimeout(() => {this.setState({ isSubmitted: false })}, 1000)
-        }
-        else{
-            this.setState({
-                name: "",
-                error: true,
-                isSubmitted: false
-            })
-            setTimeout(() => {this.setState({ error: false })}, 1000)
-        }
-            console.log(res)
+                    name: "",
+                    isSubmitted: true,
+                    error: false
+                })
+                setTimeout(() => {this.setState({ isSubmitted: false })}, 1000)
+            }
+            else{
+                this.setState({
+                    name: "",
+                    error: true,
+                    isSubmitted: false
+                })
+                setTimeout(() => {this.setState({ error: false })}, 1000)
+            }
         })
         .catch(err => {
             this.setState({

@@ -7,8 +7,8 @@
     "node": "10.x"
   },
   "scripts": {
-    "start": "node server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix webapp && npm run build --prefix webapp",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "webapp": "npm start --prefix webapp",
     "dev": "concurrently \"npm run server\" \"npm run webapp\""

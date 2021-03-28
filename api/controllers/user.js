@@ -42,8 +42,7 @@ const createUserController = (req, res, next) => {
 	const user = new User({
 		name
 	});
-	user
-		.save()
+	user.save()
 		.then((data) => {
 			res.status(201).json({
 				message: "User Created",
