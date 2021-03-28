@@ -1,0 +1,21 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+}
+
+li {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    align-items: center;
+}
+
+.links {
+    text-decoration: none;
+    color: #61dafb;
+}
+.links:hover{
+    text-decoration: none;
+    color: #61dafb;
+}
+
