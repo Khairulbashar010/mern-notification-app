@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -9,16 +8,13 @@ const userRoute = require("./api/routes/user");
 
 const app = express();
 
-if(process.env.NODE_ENV==="production"){
+if(process.env.NODE_ENV === "production"){
 	app.use(express.static('/webapp/build'));
+
 	const path = require('path')
 	app.get("*",(req, res) => {
-		res.sendFile(
-			path.resolve(__dirname, 'webapp', 'build', 'index.html'),
-			path.resolve(__dirname, 'webapp', 'build', 'favicon.ico'),
-
-		)
-	})
+		res.sendFile(path.resolve(__dirname, 'webapp', 'build', 'index.html'));
+	});
 }
 else{
 	const morgan = require("morgan");
@@ -51,8 +47,8 @@ app.use("/", userRoute);
 
 
 // Create server
-const serverPORT = process.env.serverPORT || 5000
-app.listen(serverPORT, () => {
+const serverPORT = process.env.serverPORT
+app.listen(serverPORT || 5000, () => {
 	console.log(
 		`Server running on "http://localhost:${serverPORT}"`
 	);
