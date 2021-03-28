@@ -10,13 +10,13 @@ const app = express();
 
 if(process.env.NODE_ENV === "production"){
 	app.use(express.static('/webapp/build'));
+	app.use(express.static('/webapp/build/static/css/main.32a6273b.chunk.css'));
+	app.use(express.static('/webapp/build/favicon.ico'));
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '/weabapp/build')));
 
 	app.get("*",(req, res) => {
 		res.sendFile(path.resolve(__dirname, 'webapp', 'build', 'index.html'));
-		res.sendFile(path.resolve(__dirname, 'webapp/main.32a6273b.chunk.css'));
-		res.sendFile(path.resolve(__dirname, 'webapp/favicon.ico'));
 	});
 }
 else{
