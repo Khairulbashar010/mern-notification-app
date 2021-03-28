@@ -35,7 +35,7 @@ mongoose
 		useCreateIndex: true,
 	})
 	.then(() => {
-		console.log(`Database connected`);
+		console.log("Database Connected...");
 	})
 	.catch((err) => {
 		console.error(`db error: ${err.message}`);
@@ -47,9 +47,9 @@ app.use("/", userRoute);
 
 
 // Create server
-const serverPORT = process.env.serverPORT
-app.listen(serverPORT || 5000, () => {
+
+app.listen(process.env.PORT || 5000, () => {
 	console.log(
-		`Server running on "http://localhost:${serverPORT}"`
+		`Server Started...`
 	);
 });
