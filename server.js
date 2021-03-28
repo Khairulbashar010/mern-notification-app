@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 // Database Connection
 
 mongoose
-	.connect(process.env.databaseURI, {
+	.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useCreateIndex: true,
