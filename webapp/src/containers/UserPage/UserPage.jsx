@@ -6,6 +6,7 @@ export default function UserPage(props) {
     }, [])
 
     const [user, setName] = useState({})
+    const [copied, setCopied] = useState(false)
     const {id} = props.location.state
 
     const fetchName = async () =>{
@@ -15,6 +16,8 @@ export default function UserPage(props) {
     }
     const copyLink = () => {
         navigator.clipboard.writeText(`User id: ${id}`)
+        setCopied(true)
+        setTimeout(() => setCopied(false), 1000)
     }
 
     return (
@@ -22,6 +25,8 @@ export default function UserPage(props) {
             <h3>This Page <br/> Is For <br/> {user.name}</h3>
             <button className="btn btn-primary my-3"
             onClick={copyLink} ><i className="fas fa-share"></i>&nbsp;&nbsp;Share</button>
+            {copied && <p className="text-success">Link Copied</p>}
+
         </div>
     )
 }
