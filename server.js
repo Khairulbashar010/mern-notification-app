@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const userRoute = require("./api/routes/user");
+const messageRoute = require("./api/routes/message");
 
 const app = express();
 
@@ -14,8 +15,9 @@ if(process.env.NODE_ENV === "production"){
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '../weabapp/build')));
 
-	app.get("*",(req, res) => {
-		res.sendFile(path.resolve(__dirname, 'webapp', 'build', 'index.html'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname+'/webapp/build/index.html'));
+
 	});
 }
 else{
@@ -46,6 +48,7 @@ mongoose
 // Routes
 
 app.use("/", userRoute);
+app.use("/test", messageRoute);
 
 
 // Create server

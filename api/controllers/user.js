@@ -58,27 +58,8 @@ const createUserController = (req, res, next) => {
 };
 
 
-// Delete user controller
-const deleteUserController = (req, res, next) => {
-	const { id } = req.params;
-	User.findByIdAndDelete(id)
-		.then((data) => {
-			res.status(200).json({
-				message: "User Deleted",
-				data,
-			});
-		})
-		.catch((err) => {
-			res.status(500).json({
-				message: "Error occured",
-				err,
-			});
-		});
-};
-
 module.exports = {
 	getAllUserController,
 	createUserController,
 	getOneUserController,
-	deleteUserController,
 };

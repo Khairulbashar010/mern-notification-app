@@ -1,7 +1,8 @@
 import './App.css';
 import User from './containers/User/User'
 import UserPage from './containers/UserPage/UserPage'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import MessagePage from './containers/MessagePage/MessagePage'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
       <header className="App-header">
         <Router>
             <Route path="/" exact component={User}/>
-            <Route path="/:id" component={UserPage}/>
+            <Switch>
+              <Route path="/test" exact component={MessagePage}/>
+              <Route path="/:id" component={UserPage}/>
+            </Switch>
         </Router>
 
       </header>

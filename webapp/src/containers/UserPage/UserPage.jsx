@@ -15,7 +15,7 @@ export default function UserPage(props) {
         setName(user.data)
     }
     const copyLink = () => {
-        navigator.clipboard.writeText(`User id: ${id}`)
+        navigator.clipboard.writeText(`https://assesment.page.link/test?uId=${id}&uName=${user.name}`)
         setCopied(true)
         setTimeout(() => setCopied(false), 1000)
     }
