@@ -13,11 +13,15 @@ export default function UserPage(props) {
         const user = await fetchName.json()
         setName(user.data)
     }
+    const copyLink = () => {
+        navigator.clipboard.writeText(`User id: ${id}`)
+    }
 
     return (
         <div className="App-header">
             <h3>This Page <br/> Is For <br/> {user.name}</h3>
-            <button className="btn btn-primary my-3" type="submit"><i className="fas fa-share"></i>&nbsp;&nbsp;Share</button>
+            <button className="btn btn-primary my-3"
+            onClick={copyLink} ><i className="fas fa-share"></i>&nbsp;&nbsp;Share</button>
         </div>
     )
 }
