@@ -10,8 +10,7 @@ const app = express();
 
 if(process.env.NODE_ENV === "production"){
 	app.use(express.static('/webapp/build'));
-	app.use(express.static('/webapp/build/static/css/main.32a6273b.chunk.css'));
-	app.use(express.static('/webapp/build/favicon.ico'));
+
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '/weabapp/build')));
 

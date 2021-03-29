@@ -5,13 +5,16 @@ const userController = require("../controllers/user");
 
 // Routes
 
-router.get("/users", userController.getAllUserController); // Get all data
+router.get("/users", userController.getAllUserController); // Get user all data
 
-router.get("/:id", userController.getOneUserController); // Get one data
+router.get("/:id", userController.getOneUserController); // Get one user data
 
-router.post("/", userController.createUserController); // Create data
+router.post("/", userController.createUserController); // Create user
 
 router.delete("/:id", userController.deleteUserController); // Delete data
+
+router.get("/users", userController.getAllUserController); // Get user all data
+
 
 // Exports
 
