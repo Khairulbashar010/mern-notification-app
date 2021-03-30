@@ -8,7 +8,7 @@ import classess from './User.module.css'
 export default class User extends Component {
 
         state = {
-            users: [],
+            users: {},
             name: "",
             isSubmitted: false,
             error: false
@@ -19,10 +19,11 @@ export default class User extends Component {
     }
 
     fetchUsers() {
-         axios.get(`/users`)
+         axios.get(`/user`)
         .then(res => {
-            console.log(res)
             this.setState({users: res.data.user})
+            console.log(this.state.users)
+
         })
         .catch(err =>
             console.log('Error ocured', err)
@@ -93,7 +94,11 @@ export default class User extends Component {
                 <div>
                     <h2>Users</h2>
                     <ul>
-                        
+                        {this.state.users.map( user =>
+                        <li key={user._id}>
+                            <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
+                        </li>
+                        )}
                     </ul>
                 </div>
             </div>
