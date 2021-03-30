@@ -15,7 +15,7 @@ export default function UserPage(props) {
         setName(user.data)
     }
     const copyLink = () => {
-        navigator.clipboard.writeText(`https://assesment.page.link/message?uId=${id}&uName=${user.name}`)
+        navigator.clipboard.writeText(`https://assesment.page.link/?link=http://localhost:3000/test?user=${id}-${user.name}&apn=com.mobileapp&amv=0&afl=http://localhost:3000/test?user=${id}-${user.name}`)
         setCopied(true)
         setTimeout(() => setCopied(false), 1000)
     }

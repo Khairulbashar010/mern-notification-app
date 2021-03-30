@@ -5,7 +5,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const userRoute = require("./api/routes/user");
-const messageRoute = require("./api/routes/message");
 
 const app = express();
 
@@ -46,8 +45,6 @@ mongoose
 // Routes
 
 app.use("/", userRoute);
-app.use("/message", messageRoute);
-
 
 // Create server
 
