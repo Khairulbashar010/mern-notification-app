@@ -8,6 +8,11 @@ const userRoute = require("./api/routes/user");
 
 const app = express();
 
+// Routes
+
+app.use("/", userRoute);
+
+
 if(process.env.NODE_ENV == "production"){
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '/webapp/build')));
@@ -42,9 +47,7 @@ mongoose
 		console.error(`db error: ${err.message}`);
 	});
 
-// Routes
 
-app.use("/", userRoute);
 
 // Create server
 
