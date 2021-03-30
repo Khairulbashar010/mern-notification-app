@@ -25,7 +25,7 @@ export default class User extends Component {
     }
 
     fetchUsers = ()=> {
-         axios.get(`/user`)
+         axios.get(`/users`)
         .then(res => {
             console.log(res)
             this.setState({users: res.data.user});
