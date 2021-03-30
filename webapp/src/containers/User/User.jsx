@@ -14,6 +14,10 @@ export default class User extends Component {
             isSubmitted: false,
             error: false
         }
+        this.fetchUsers = this.fetchUsers.bind(this)
+        this.changeHandler = this.changeHandler.bind(this)
+        this.submitHandler = this.submitHandler.bind(this)
+
     }
 
     componentDidMount() {
