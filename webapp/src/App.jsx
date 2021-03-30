@@ -12,7 +12,7 @@ function App() {
         <Router>
             <Route path="/" exact component={User}/>
             <Switch>
-              <Route path="/test" exact component={MessagePage}/> {/*To test replace message with test here*/}
+              <Route path="/test" exact component={MessagePage}/>
               <Route path="/:id" component={UserPage}/>
             </Switch>
         </Router>
