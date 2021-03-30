@@ -8,7 +8,7 @@ import classess from './User.module.css'
 export default class User extends Component {
 
         state = {
-            users: {},
+            users: [],
             name: "",
             isSubmitted: false,
             error: false
@@ -22,7 +22,6 @@ export default class User extends Component {
          axios.get(`/user`)
         .then(res => {
             this.setState({users: res.data.user})
-            console.log(this.state.users)
 
         })
         .catch(err =>
