@@ -24,8 +24,8 @@ export default class User extends Component {
         this.fetchUsers()
     }
 
-    fetchUsers= ()=> {
-         axios.get(`/user`)
+    fetchUsers() {
+         axios.get(`/users`)
         .then(res => {
             console.log(res)
             this.setState({users: res.data.user});
@@ -36,14 +36,14 @@ export default class User extends Component {
         )
     }
 
-    changeHandler = (e) => {
+    changeHandler(event) {
         this.setState ({
-            [e.target.name]: e.target.value
+            [event.target.name]: event.target.value
         })
     }
 
-    submitHandler = (e) => {
-        e.preventDefault()
+    submitHandler(event) {
+        event.preventDefault()
         axios.post(`/`, {
             name: this.state.name
         })
