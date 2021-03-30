@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react'
 
 export default function MessagePage(props) {
-    console.log(props)
+    useEffect(() => {
+        fetchName()
+    }, [])
 
+    const [user, setName] = useState({})
+    const fetchName = async () =>{
+        const fetchName = await fetch(`/test`)
+        const user = await fetchName.json()
+        console.log(props.location)
+
+        setName(user.data)
+    }
     return (
         <div className="App-header">
             <h3>This Page <br/> Is For <br/></h3>
