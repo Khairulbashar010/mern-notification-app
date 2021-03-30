@@ -6,19 +6,21 @@ import classess from './User.module.css'
 
 
 export default class User extends Component {
-
-        state = {
+    constructor(props){
+        super()
+        this.state = {
             users: [],
             name: "",
             isSubmitted: false,
             error: false
         }
+    }
 
     componentDidMount() {
         this.fetchUsers()
     }
 
-    fetchUsers() {
+    fetchUsers= ()=> {
          axios.get(`/user`)
         .then(res => {
             this.setState({users: res.data.user});
@@ -69,20 +71,19 @@ export default class User extends Component {
     }
 
     render() {
-        const {users} = this.state
         return (
             <div>
                 {this.state.isSubmitted && <p className="text-success">User created</p>}
                 {this.state.error && <p className="text-danger">Error ocured</p>}
 
-                <form onSubmit={this.submitHandler.bind(this)}>
+                <form onSubmit={this.submitHandler}>
                     <input
                     className="form-control my-2"
                     type="text"
                     name="name"
                     value= {this.state.name}
                     placeholder="Enter Name"
-                    onChange={this.changeHandler.bind(this)}
+                    onChange={this.changeHandler}
                     />
 
                     <input
@@ -94,7 +95,7 @@ export default class User extends Component {
                 <div>
                     <h2>Users</h2>
                     <ul>
-                        {users.map( user =>
+                        {this.state.users.map( user =>
                         <li key={user._id}>
                             <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
                         </li>
