@@ -2,11 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
+
 dotenv.config();
 
 const userRoute = require("./api/routes/user");
 
 const app = express();
+
+app.use(cors())
 
 // Routes
 
@@ -24,9 +28,7 @@ if(process.env.NODE_ENV == "production"){
 }
 else{
 	const morgan = require("morgan");
-	const cors = require("cors");
 	app.use(morgan("dev"));
-	app.use(cors())
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
