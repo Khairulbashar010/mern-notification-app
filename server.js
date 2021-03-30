@@ -9,9 +9,6 @@ dotenv.config();
 const userRoute = require("./api/routes/user");
 
 const app = express();
-
-app.use(cors())
-
 // Routes
 
 app.use("/", userRoute);
