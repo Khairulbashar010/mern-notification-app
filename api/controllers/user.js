@@ -2,7 +2,7 @@ const User = require("../models/User");
 
 // Get all user controller
 const getAllUserController = (req, res, next) => {
-	User.find({})
+	User.find()
 		.then((user) => {
 			res.status(200).json({
 				message: "All Users",
