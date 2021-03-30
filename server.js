@@ -9,15 +9,12 @@ const messageRoute = require("./api/routes/message");
 
 const app = express();
 
-if(process.env.NODE_ENV === "production"){
+if(process.env.NODE_ENV == "production"){
 	const path = require('path')
-	app.use(express.static(path.join(__dirname, '../weabapp/build')));
-	app.use(express.static(path.join(__dirname, '../weabapp/public')));
-	app.use(express.static(path.join(__dirname, '../weabapp/build/static')));
-
+	app.use(express.static(path.join(__dirname, '/weabapp/build')));
 
 	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname+'/webapp/build/index.html'));
+		res.sendFile(path.join(__dirname, 'webapp', 'build', 'index.html'));
 
 	});
 }
@@ -49,7 +46,7 @@ mongoose
 // Routes
 
 app.use("/", userRoute);
-app.use("/test", messageRoute);
+app.use("/message", messageRoute);
 
 
 // Create server
