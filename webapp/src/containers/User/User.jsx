@@ -22,8 +22,6 @@ export default class User extends Component {
          axios.get(`/users`)
         .then(res => {
             this.setState({users: res.data.user})
-            console.log(this.state.users)
-
         })
         .catch(err =>
             console.log('Error ocured', err)
