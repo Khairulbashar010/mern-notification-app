@@ -97,7 +97,7 @@ export default class User extends Component {
                         <li key={user._id}>
                             <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
                         </li>
-                        )}
+                        ).bind(this)}
                     </ul>
                 </div>
             </div>
