@@ -76,7 +76,7 @@ export default class User extends Component {
     }
 
     render() {
-        const users = this.state.users
+        const {users} = this.state
         console.log(users)
         return (
             <div>
