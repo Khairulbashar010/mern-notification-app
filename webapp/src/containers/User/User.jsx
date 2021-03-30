@@ -76,6 +76,7 @@ export default class User extends Component {
 
     render() {
         const users = this.state
+        console.log(users)
         return (
             <div>
                 {this.state.isSubmitted && <p className="text-success">User created</p>}
@@ -100,11 +101,7 @@ export default class User extends Component {
                 <div>
                     <h2>Users</h2>
                     <ul>
-                        {users.map( user =>
-                        <li key={user._id}>
-                            <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
-                        </li>
-                        )}
+
                     </ul>
                 </div>
             </div>
