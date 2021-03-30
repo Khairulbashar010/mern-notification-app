@@ -14,6 +14,7 @@ if(process.env.NODE_ENV === "production"){
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '../weabapp/build')));
 	app.use(express.static(path.join(__dirname, '../weabapp/public')));
+	app.use(express.static(path.join(__dirname, '../weabapp/build/static')));
 
 
 	app.get('*', (req, res) => {
