@@ -24,7 +24,7 @@ export default class User extends Component {
         this.fetchUsers()
     }
 
-    fetchUsers= ()=> {
+    fetchUsers = ()=> {
          axios.get(`/user`)
         .then(res => {
             this.setState({users: res.data.user});
@@ -75,7 +75,7 @@ export default class User extends Component {
     }
 
     render() {
-        const users = this.state
+        const users = this.state.users
         console.log(users)
         return (
             <div>
