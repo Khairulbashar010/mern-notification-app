@@ -81,7 +81,7 @@ export default class User extends Component {
                     name="name"
                     value= {this.state.name}
                     placeholder="Enter Name"
-                    onChange={this.changeHandler}
+                    onChange={this.changeHandler.bind(this)}
                     />
 
                     <input
