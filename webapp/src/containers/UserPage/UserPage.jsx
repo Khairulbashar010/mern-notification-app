@@ -16,7 +16,7 @@ export default function UserPage(props) {
     }
     const dynamicLink = `https://assesment.page.link/message?user=${id}-${user.name}`
     const copyLink = () => {
-        navigator.clipboard.writeText(`https://assesment.page.link/?link=${dynamicLink}&apn=com.mobileapp&amv=0&afl=http://localhost:3000/test?user=${id}-${user.name}`)
+        navigator.clipboard.writeText(`https://assesment.page.link/?link=${dynamicLink}&apn=com.mobileapp&amv=0&afl=${dynamicLink}`)
         setCopied(true)
         setTimeout(() => setCopied(false), 1000)
     }
