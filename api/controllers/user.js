@@ -38,7 +38,7 @@ const getOneUserController = (req, res, next) => {
 // Create new user controller
 const createUserController = (req, res, next) => {
 	const { name } = req.body;
-
+	console.log(name)
 	const user = new User({
 		name
 	});
