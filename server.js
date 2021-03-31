@@ -9,9 +9,7 @@ const userRoute = require("./api/routes/user");
 const app = express();
 app.use(cors());
 
-// Routes
 
-app.use("/", userRoute);
 
 
 if(process.env.NODE_ENV == "production"){
@@ -28,6 +26,11 @@ else{
 }
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+
+// Routes
+
+app.use("/", userRoute);
 
 // Database Connection
 
