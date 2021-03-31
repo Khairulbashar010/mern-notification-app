@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import MessagePage from './containers/MessagePage/MessagePage';
 import User from './containers/User/User';
 import UserPage from './containers/UserPage/UserPage';
 
@@ -12,7 +11,6 @@ function App() {
         <Router>
 			<Switch>
 				<Route path="/" exact component={User}/>
-				<Route path="/message" exact component={MessagePage}/>
 				<Route path="/:id" component={UserPage}/>
             </Switch>
         </Router>
