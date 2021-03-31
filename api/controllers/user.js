@@ -21,15 +21,15 @@ const getAllUserController = (req, res, next) => {
 const getOneUserController = (req, res, next) => {
 	const name = req.params.id;
 	User.findOne({name: new RegExp('^'+name+'$', "i")}, function(err, data) {
-		if(data === null){
-			res.status(500).json({
-				message: "Error occured",
+		if(data){
+			res.status(200).json({
+				message: "User Found",
 				data,
 			});
 		}
 		else{
-			res.status(200).json({
-				message: "User Found",
+			res.status(500).json({
+				message: "User Not Found",
 				data,
 			});
 		}
