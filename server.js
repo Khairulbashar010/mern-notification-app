@@ -17,13 +17,7 @@ var allowCrossDomain = function(req,res,next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 	res.header('Content-Security-Policy', "img-src 'self'");
     next();
-}
-app.use(csp({
-    policies: {
-        'default-src': [csp.NONE],
-        'img-src': [csp.SELF],
-    }
-}));
+};
 app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
