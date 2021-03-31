@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+// Routes
+
+app.use("/", userRoute);
+
 if(process.env.NODE_ENV == "production"){
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '/webapp/build')))
@@ -24,9 +28,7 @@ if(process.env.NODE_ENV == "production"){
 	});
 }
 
-// Routes
 
-app.use("/api", userRoute);
 
 
 // Database Connection
