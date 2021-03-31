@@ -7,14 +7,15 @@ export default function UserPage(props) {
 
     const [user, setName] = useState({})
     const [copied, setCopied] = useState(false)
-    const {id} = props.location.state
+    var url = (window.location).toString()
+    const slug = (url.split('.com/')[1])
 
     const fetchName = async () =>{
-        const fetchName = await fetch(`/${id}`)
+        const fetchName = await fetch(`/${slug}`)
         const user = await fetchName.json()
         setName(user.data)
     }
-    const dynamicLink = `https://assesment-web-part.herokuapp.com/message?user=${id}-${user.name}`
+    const dynamicLink = `http://localhost:3000/test?user=${user._id}-${user.name}`
     const copyLink = () => {
             navigator.clipboard.writeText(`https://assesment.page.link/?link=${dynamicLink}&apn=com.mobileapp&amv=0&afl=${dynamicLink}`)
         setCopied(true)

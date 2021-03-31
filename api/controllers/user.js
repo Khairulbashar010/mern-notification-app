@@ -19,20 +19,24 @@ const getAllUserController = (req, res, next) => {
 
 // Get one user controller
 const getOneUserController = (req, res, next) => {
-	const { id } = req.params;
-	User.findById(id)
-		.then((data) => {
-				res.status(200).json({
-					message: "User Found",
-					data,
-				});
-		})
-		.catch((err) => {
+	const name = req.params.id;
+	console.log(name)
+	User.findOne({name: new RegExp('^'+name+'$', "i")}, function(err, data) {
+		if(err){
 			res.status(500).json({
 				message: "Error occured",
 				err,
 			});
-		});
+		}
+		else{
+			res.status(200).json({
+				message: "User Found",
+				data,
+			});
+			console.log(res)
+
+		}
+	  });
 };
 
 // Create new user controller
