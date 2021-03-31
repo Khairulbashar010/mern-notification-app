@@ -27,7 +27,6 @@ export default class User extends Component {
         const userName = url.split('-')[1]
         if(userName)
         this.setState({userName});
-        console.log(userName)
     }
 
     fetchUsers() {
@@ -77,14 +76,11 @@ export default class User extends Component {
                 error: true,
                 isSubmitted: false
             })
-            console.log(err)
         })
     }
 
     render() {
         const {users} = this.state
-        console.log(this.state.userName)
-
         return (
             <div>
                 { this.state.userName.length > 2 ?
