@@ -103,7 +103,7 @@ export default class User extends Component {
                     <h2>Users</h2>
                     <ul>
                         {users.map( user =>
-                        <li key={user._id}>
+                        <li key={user.name}>
                             <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
                         </li>
                         )}

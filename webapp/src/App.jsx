@@ -12,8 +12,8 @@ function App() {
         <Router>
             <Route path="/" exact component={User}/>
             <Switch>
-              <Route path="/message" exact component={MessagePage}/>
-              <Route path="/:id" component={UserPage}/>
+              <Route path="/message" component={MessagePage}/>
+              <Route path="/:name" component={UserPage}/>
             </Switch>
         </Router>
 
