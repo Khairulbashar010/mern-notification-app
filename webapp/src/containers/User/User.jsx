@@ -78,8 +78,8 @@ export default class User extends Component {
     render() {
         const {users} = this.state
         const url = (window.location).toString()
-        const UserName = url.split('com/')[1]
-        console.log(UserName.length)
+        const slug = url.split('com/')[1]
+        const UserName = slug.split('-')[1]
         return (
             <div>
                 {UserName.length > 2 ?
