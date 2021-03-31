@@ -1,31 +1,19 @@
-const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const express = require("express");
 const dotenv = require("dotenv");
+const morgan = require("morgan");
 const cors = require("cors");
 dotenv.config();
 
 const userRoute = require("./api/routes/user");
+
 const app = express();
-app.use(cors());
 
-
-
-
-if(process.env.NODE_ENV == "production"){
-	const path = require('path')
-	app.use(express.static(path.join(__dirname, '/webapp/build')))
-
-	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, 'webapp', 'build', 'index.html'))
-	});
-}
-else{
-	const morgan = require("morgan");
-	app.use(morgan("dev"));
-}
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(morgan("dev"));
+app.use(cors());
 
 
 // Routes
@@ -47,6 +35,19 @@ mongoose
 		console.error(`db error: ${err.message}`);
 	});
 
+// For production
+
+if(process.env.NODE_ENV == "production"){
+	const path = require('path')
+	app.use(express.static(path.join(__dirname, '/webapp/build')))
+
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, 'webapp', 'build', 'index.html'))
+	});
+}
+else{
+
+}
 
 
 // Create server
