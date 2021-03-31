@@ -12,7 +12,7 @@ function App() {
         <Router>
             <Route path="/" exact component={User}/>
             <Switch>
-              <Route path="/message" component={MessagePage}/>
+              <Route path="/message" exact component={MessagePage}/>
               <Route path="/:id" component={UserPage}/>
             </Switch>
         </Router>

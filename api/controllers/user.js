@@ -20,12 +20,11 @@ const getAllUserController = (req, res, next) => {
 // Get one user controller
 const getOneUserController = (req, res, next) => {
 	const name = req.params.id;
-	console.log(name)
 	User.findOne({name: new RegExp('^'+name+'$', "i")}, function(err, data) {
-		if(err){
+		if(data === null){
 			res.status(500).json({
 				message: "Error occured",
-				err,
+				data,
 			});
 		}
 		else{
@@ -33,8 +32,6 @@ const getOneUserController = (req, res, next) => {
 				message: "User Found",
 				data,
 			});
-			console.log(res)
-
 		}
 	  });
 };
