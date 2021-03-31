@@ -12,6 +12,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+  });
 // Routes
 
 app.use("/", userRoute);
@@ -36,7 +41,7 @@ if(process.env.NODE_ENV == "production"){
 	const path = require('path')
 	app.use(express.static(path.join(__dirname, '/webapp/build')))
 
-	app.get('*', cors(),	(req, res) => {
+	app.get('*',	(req, res) => {
 		res.sendFile(path.join(__dirname, 'webapp', 'build', 'index.html'))
 	});
 }
