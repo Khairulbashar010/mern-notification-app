@@ -11,7 +11,7 @@ export default function UserPage(props) {
     const slug = url.split('/')[1]
 
     const fetchName = async () =>{
-        const fetchName = await fetch(`/${slug}`)
+        const fetchName = await fetch(`/users/${slug}`)
         const user = await fetchName.json()
         setName(user.data)
     }
