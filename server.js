@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 // Routes
 
-app.use("/", userRoute);
+app.use("/api", userRoute);
 
 
 if(process.env.NODE_ENV == "production"){
