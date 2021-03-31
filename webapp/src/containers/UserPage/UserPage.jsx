@@ -3,14 +3,17 @@ import React, { useEffect, useState } from 'react'
 export default function UserPage(props) {
     useEffect(() => {
         fetchName()
+        return console.log('deleted')
     }, [])
 
     const [user, setName] = useState({})
     const [copied, setCopied] = useState(false)
+    const {name} = window.location.pathname
     const {id} = props.location.state
 
+
     const fetchName = async () =>{
-        const fetchName = await fetch(`/api/${id}`)
+        const fetchName = await fetch(`/api/${name}`)
         const user = await fetchName.json()
         setName(user.data)
     }
