@@ -7,7 +7,7 @@ const userController = require("../controllers/user");
 
 router.get("/users", userController.getAllUserController); // Get user all data
 
-router.get("/:id", userController.getOneUserController); // Get one user data
+router.get("/:name", userController.getOneUserController); // Get one user data
 
 router.post("/", userController.createUserController); // Create user
 

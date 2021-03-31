@@ -8,9 +8,10 @@ export default function UserPage(props) {
     const [user, setName] = useState({})
     const [copied, setCopied] = useState(false)
     const {id} = props.location.state
+    const name = window.location.pathname
 
     const fetchName = async () =>{
-        const fetchName = await fetch(`/${id}`)
+        const fetchName = await fetch(`${name}`)
         const user = await fetchName.json()
         setName(user.data)
     }
