@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const csp = require('express-csp-header');
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -15,9 +16,14 @@ var allowCrossDomain = function(req,res,next) {
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 	res.header('Content-Security-Policy', "img-src 'self'");
-
     next();
 }
+app.use(csp({
+    policies: {
+        'default-src': [csp.NONE],
+        'img-src': [csp.SELF],
+    }
+}));
 app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
