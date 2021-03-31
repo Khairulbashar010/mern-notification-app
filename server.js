@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const csp = require('express-csp-header');
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -9,15 +10,32 @@ const userRoute = require("./api/routes/user");
 const app = express();
 
 app.use(cors());
+app.options('*',cors());
+var allowCrossDomain = function(req,res,next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+	res.header('Content-Security-Policy', "img-src 'self'");
+    next();
+};
+app.use(allowCrossDomain);
+
+app.use(csp({
+    policies: {
+        'default-src': [csp.NONE],
+        'img-src': [csp.SELF],
+    }
+}));
+
+app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	res.header('Content-Security-Policy', "img-src 'self'");
 	next();
-  });
+});
 // Routes
 
 app.use("/", userRoute);
