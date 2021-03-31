@@ -13,7 +13,7 @@ export default function UserPage(props) {
 
 
     const fetchName = async () =>{
-        const fetchName = await fetch(`/api/${name}`)
+        const fetchName = await fetch(`/api${name}`)
         const user = await fetchName.json()
         setName(user.data)
     }
