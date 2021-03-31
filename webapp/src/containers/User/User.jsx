@@ -77,38 +77,49 @@ export default class User extends Component {
 
     render() {
         const {users} = this.state
-        console.log(users)
+        const url = (window.location).toString()
+        const UserName = url.split('-')[1]
+        console.log(UserName.length)
         return (
             <div>
-                {this.state.isSubmitted && <p className="text-success">User created</p>}
-                {this.state.error && <p className="text-danger">Error ocured</p>}
-
-                <form onSubmit={this.submitHandler}>
-                    <input
-                    className="form-control my-2"
-                    type="text"
-                    name="name"
-                    value= {this.state.name}
-                    placeholder="Enter Name"
-                    onChange={this.changeHandler}
-                    />
-
-                    <input
-                    className="form-control btn btn-lg btn-primary mb-2"
-                    type="submit"
-                    value="Create"
-                    />
-                </form>
-                <div>
-                    <h2>Users</h2>
-                    <ul>
-                        {users.map( user =>
-                        <li key={user._id}>
-                            <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
-                        </li>
-                        )}
-                    </ul>
+                {UserName.length > 2 ?
+                <div className="">
+                    <h3>This Page <br/> Is For <br/> {UserName}</h3>
+                    <a href="https://assesment.page.link/download" className="btn btn-primary my-3" ><i className="fas fa-download"></i>&nbsp;&nbsp;Download App</a>
                 </div>
+                 :
+                <div>
+                    {this.state.isSubmitted && <p className="text-success">User created</p>}
+                    {this.state.error && <p className="text-danger">Error ocured</p>}
+
+                    <form onSubmit={this.submitHandler}>
+                        <input
+                        className="form-control my-2"
+                        type="text"
+                        name="name"
+                        value= {this.state.name}
+                        placeholder="Enter Name"
+                        onChange={this.changeHandler}
+                        />
+
+                        <input
+                        className="form-control btn btn-lg btn-primary mb-2"
+                        type="submit"
+                        value="Create"
+                        />
+                    </form>
+                    <div>
+                        <h2>Users</h2>
+                        <ul>
+                            {users.map( user =>
+                            <li key={user._id}>
+                                <Link to={{ pathname: `/${user.name}`, state: { id: user._id, name: user.name} }} className={classess.links}> {user.name}</Link>
+                            </li>
+                            )}
+                        </ul>
+                    </div>
+                </div>
+                 }
             </div>
         )
     }
