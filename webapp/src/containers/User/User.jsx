@@ -12,7 +12,8 @@ export default class User extends Component {
             users: [],
             name: "",
             isSubmitted: false,
-            error: false
+            error: false,
+            userName: ""
         }
         this.fetchUsers = this.fetchUsers.bind(this)
         this.changeHandler = this.changeHandler.bind(this)
@@ -22,6 +23,11 @@ export default class User extends Component {
 
     componentDidMount() {
         this.fetchUsers()
+        const url = (window.location.search).toString()
+        const userName = url.split('-')[1]
+        if(userName)
+        this.setState({userName});
+        console.log(userName)
     }
 
     fetchUsers() {
@@ -77,15 +83,13 @@ export default class User extends Component {
 
     render() {
         const {users} = this.state
-        const url = (window.location.search).toString()
-        const UserName = url.split('-')[1]
-        console.log('userName')
-        console.log(UserName)
+        console.log(this.state.userName)
+
         return (
             <div>
-                {UserName.length > 2 ?
+                { this.state.userName.length > 2 ?
                 <div className="">
-                    <h3>This Page <br/> Is For <br/> {UserName}</h3>
+                    <h3>This Page <br/> Is For <br/> {this.state.userName}</h3>
                     <a href="https://assesment.page.link/download" className="btn btn-primary my-3" ><i className="fas fa-download"></i>&nbsp;&nbsp;Download App</a>
                 </div>
                  :

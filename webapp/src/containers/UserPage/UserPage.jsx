@@ -7,8 +7,8 @@ export default function UserPage(props) {
 
     const [user, setName] = useState({})
     const [copied, setCopied] = useState(false)
-    var url = (window.location).toString()
-    const slug = url.split('com/')[1]
+    var url = (window.location.pathname).toString()
+    const slug = url.split('/')[1]
 
     const fetchName = async () =>{
         const fetchName = await fetch(`/${slug}`)
