@@ -10,9 +10,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Router>
-			<Route path="/message" exact component={MessagePage}/>
 			<Switch>
 				<Route path="/" exact component={User}/>
+				<Route path="/message" exact component={MessagePage}/>
 				<Route path="/:id" component={UserPage}/>
             </Switch>
         </Router>
