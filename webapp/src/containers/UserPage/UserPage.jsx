@@ -11,9 +11,14 @@ export default function UserPage(props) {
     const name = window.location.pathname
 
     const fetchName = async () =>{
-        const fetchName = await fetch(`${name}`)
-        const user = await fetchName.json()
-        setName(user.data)
+        await fetch(`${name}`)
+        .then(res => {
+            return res.json();
+        })
+        .then(data=>{
+            setName(data.data)
+            });
+
     }
     const dynamicLink = `https://assesment-web-part.herokuapp.com/message?user=${id}-${user.name}`
     const copyLink = () => {
