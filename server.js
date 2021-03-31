@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 dotenv.config();
+app.use(cors());
 
 const userRoute = require("./api/routes/user");
 const app = express();
 
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
