@@ -1,8 +1,8 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import User from './containers/User/User'
-import UserPage from './containers/UserPage/UserPage'
-import MessagePage from './containers/MessagePage/MessagePage'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import MessagePage from './containers/MessagePage/MessagePage';
+import User from './containers/User/User';
+import UserPage from './containers/UserPage/UserPage';
 
 
 function App() {
@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Router>
-            <Route path="/" exact component={User}/>
-            <Switch>
-              <Route path="/message" exact component={MessagePage}/>
-              <Route path="/:id" component={UserPage}/>
+			<Route path="/message" exact component={MessagePage}/>
+			<Switch>
+				<Route path="/" exact component={User}/>
+				<Route path="/:id" component={UserPage}/>
             </Switch>
         </Router>
 
