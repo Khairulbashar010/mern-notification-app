@@ -62,7 +62,7 @@ const createUserController = (req, res, next) => {
 
 // Notify User Controller
  const notifyUserController = (req, res) => {
-	const { name } = req.body;
+	const name = req.body.name;
 	admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
 		databaseURL: "https://fir-a22ad.firebaseio.com"
