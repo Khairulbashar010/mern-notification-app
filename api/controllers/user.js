@@ -61,7 +61,7 @@ const createUserController = (req, res, next) => {
 };
 
 // Notify User Controller
- const notifyUserController = (req, res,next) => {
+ const notifyUserController = (req, res) => {
 	const { name } = req.body;
 	admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
