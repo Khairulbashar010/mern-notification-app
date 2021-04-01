@@ -93,10 +93,10 @@ const createUserController = (req, res, next) => {
 
 	admin.messaging().send(message)
 	.then(res => {
-		console.log(`Successfully Sent Notification ${res}`);
+		res.send(`Successfully Sent Notification ${res}`);
 	})
 	.catch(err => {
-		console.log(`Error Sending Notification ${err}`);
+		res.send(`Error Sending Notification ${err}`);
 	})
  }
 
