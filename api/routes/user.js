@@ -9,6 +9,8 @@ router.get("/users", userController.getAllUserController); // Get user all data
 
 router.get("/users/:id", userController.getOneUserController); // Get one user data
 
+router.post("/send/notify", userController.notifyUserController); // Create user
+
 router.post("/", userController.createUserController); // Create user
 
 
