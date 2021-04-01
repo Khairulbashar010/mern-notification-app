@@ -5,8 +5,6 @@ const userController = require("../controllers/user");
 
 // Routes
 
-router.post("/send/notify", userController.notifyUserController); // Notify user
-
 router.get("/users", userController.getAllUserController); // Get user all data
 
 router.get("/users/:id", userController.getOneUserController); // Get one user data
