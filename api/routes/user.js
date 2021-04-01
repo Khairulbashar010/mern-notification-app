@@ -11,7 +11,7 @@ router.get("/users/:id", userController.getOneUserController); // Get one user d
 
 router.post("/", userController.createUserController); // Create user
 
-router.post("/send", userController.notifyUserController); // Notify user
+router.post("/users/send", userController.notifyUserController); // Notify user
 
 
 // Exports

@@ -6,6 +6,7 @@ const cors = require("cors");
 dotenv.config();
 
 const userRoute = require("./api/routes/user");
+const userRoute = require("./api/routes/notify");
 const app = express();
 
 app.use(cors());
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 // Routes
 
 app.use("/", userRoute);
+app.use("/send", notifyRoute);
 
 // Database Connection
 
