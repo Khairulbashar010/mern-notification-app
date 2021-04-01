@@ -6,7 +6,7 @@ const cors = require("cors");
 dotenv.config();
 
 const userRoute = require("./api/routes/user");
-const userRoute = require("./api/routes/notify");
+const notifyRoute = require("./api/routes/notify");
 const app = express();
 
 app.use(cors());
