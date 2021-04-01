@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const admin = require('firebase-admin');
-const serviceAccount = require('./fir-a22ad-firebase-adminsdk-37n2x-1a2a57f132.json');
+const serviceAccount = require('../../fir-a22ad-firebase-adminsdk-37n2x-1a2a57f132.json');
 
 // Get all user controller
 const getAllUserController = (req, res, next) => {
