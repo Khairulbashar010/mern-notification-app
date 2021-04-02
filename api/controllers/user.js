@@ -87,13 +87,12 @@ const notifyUserController = (req, res, next) => {
 	}
 
 	admin.messaging().send(message)
-  .then((response) => {
-    console.log('Successfully sent message:', response);
-  })
-  .catch((error) => {
-    console.log('Error sending message:', error);
-  });
-
+	.then((response) => {
+		console.log('Successfully sent message:', response);
+	})
+	.catch((error) => {
+		console.log('Error sending message:', error);
+	});
 }
 
 
