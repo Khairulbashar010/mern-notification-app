@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const admin = require('firebase-admin');
 const serviceAccount = require('../../fir-a22ad-firebase-adminsdk-37n2x-1a2a57f132.json');
+const { response } = require("express");
 
 // Get all user controller
 const getAllUserController = (req, res, next) => {
@@ -65,12 +66,12 @@ const notifyUserController = (req, res, next) => {
 	const { name } = req.body;
 		admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
-		databaseURL: "https://fir-a22ad.firebaseio.com"
+		databaseURL: 'https://fir-a22ad.firebaseio.com'
 	})
 
 	var message = {
 		notification: {
-			title: "New Notification!",
+			title: 'New Notification!',
 			body: `Notification from ${name}`
 		},
 		data: {
@@ -78,13 +79,13 @@ const notifyUserController = (req, res, next) => {
 		},
 		android: {
 			notification: {
-				sound: "default"
+				sound: 'default'
 			},
 		},
 		apns: {
 			payload: {
 				aps: {
-					sound : "default",
+					sound : 'default',
 				},
 			},
 		},
@@ -92,16 +93,11 @@ const notifyUserController = (req, res, next) => {
 	}
 
 	admin.messaging().send(message)
-	.then(res => {
-		res,status(200).json({
-			message: "New Notification Recieved"
-		});
+	.then(response => {
+		console.log('Notification Sent!')
 	})
-	.catch(err => {
-		res.status(500).json({
-			message: "Error ocured",
-			err,
-		});
+	.catch(error => {
+		console.log('Error Ocured!')
 	})
 }
 
