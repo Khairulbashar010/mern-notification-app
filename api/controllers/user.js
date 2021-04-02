@@ -93,10 +93,15 @@ const notifyUserController = (req, res, next) => {
 
 	admin.messaging().send(message)
 	.then(res => {
-		console.log(`Successfully Sent Notification ${res}`);
+		res,status(200).json({
+			message: "New Notification Recieved"
+		});
 	})
 	.catch(err => {
-		console.log(`Error Sending Notification ${err}`);
+		res.status(500).json({
+			message: "Error ocured",
+			err,
+		});
 	})
 }
 
