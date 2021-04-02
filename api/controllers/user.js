@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const admin = require('firebase-admin');
 const serviceAccount = require('../../fir-a22ad-firebase-adminsdk-37n2x-1a2a57f132.json');
-const { response } = require("express");
 
 // Get all user controller
 const getAllUserController = (req, res, next) => {
@@ -42,7 +41,6 @@ const getOneUserController = (req, res, next) => {
 // Create new user controller
 const createUserController = (req, res, next) => {
 	const { name } = req.body;
-
 	const user = new User({
 		name
 	});
@@ -66,9 +64,8 @@ const notifyUserController = (req, res, next) => {
 	const { name } = req.body;
 		admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
-		databaseURL: 'https://fir-a22ad.firebaseio.com'
+		databaseURL: 'https://fir-a22ad-default-rtdb.firebaseio.com/'
 	})
-
 	var message = {
 		notification: {
 			title: 'New Notification!',
@@ -94,10 +91,10 @@ const notifyUserController = (req, res, next) => {
 
 	admin.messaging().send(message)
 	.then(response => {
-		console.log('Notification Sent!')
+		console.log(serviceAccount)
 	})
 	.catch(error => {
-		console.log('Error Ocured!')
+		console.log(serviceAccount)
 	})
 }
 
