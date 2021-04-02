@@ -64,15 +64,12 @@ const notifyUserController = (req, res, next) => {
 	const { name } = req.body;
 		admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
-		databaseURL: 'https://fir-a22ad-default-rtdb.firebaseio.com/'
+		databaseURL: 'https://fir-a22ad.firebaseio.com'
 	})
 	var message = {
 		notification: {
 			title: 'New Notification!',
 			body: `Notification from ${name}`
-		},
-		data: {
-
 		},
 		android: {
 			notification: {
@@ -90,12 +87,13 @@ const notifyUserController = (req, res, next) => {
 	}
 
 	admin.messaging().send(message)
-	.then(response => {
-		console.log(serviceAccount)
-	})
-	.catch(error => {
-		console.log(serviceAccount)
-	})
+  .then((response) => {
+    console.log('Successfully sent message:', response);
+  })
+  .catch((error) => {
+    console.log('Error sending message:', error);
+  });
+
 }
 
 
