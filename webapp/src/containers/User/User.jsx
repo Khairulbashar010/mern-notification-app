@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import { isIOS } from 'react-device-detect'
 import { Link } from "react-router-dom"
 import classess from './User.module.css'
 
@@ -85,7 +86,11 @@ export default class User extends Component {
                 { this.state.userName.length > 2 ?
                 <div className="">
                     <h3>This Page <br/> Is For <br/> {this.state.userName}</h3>
-                    <a href="https://assesment.page.link/download" className="btn btn-primary my-3" ><i className="fas fa-download"></i>&nbsp;&nbsp;Download App</a>
+                    {isIOS ?
+                    <a href="https://assesment.page.link/downloadIOS" className="btn btn-primary my-3" ><i className="fas fa-download"></i>&nbsp;&nbsp;Download App</a>
+                    :
+                    <a href="https://assesment.page.link/download" className="btn btn-primary my-3" ><i className="fas fa-download"></i>&nbsp;&nbsp;Download App</a>}
+
                 </div>
                  :
                 <div>
